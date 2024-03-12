@@ -1,0 +1,69 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+\newcommand{\contra}{
+$\rightarrow\!\leftarrow$
+}
+
+\title{Expected Value of the Geometric Distribution}
+\author{Jack Krebsbach}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\qs{}{
+What is the expected value of the Geometric Distribution? Use a calculus based argument.
+}
+
+\begin{proof}
+
+  Let $X \sim \text{Geometric}(p).$ Then $Pr(X =x) =  p(1-p)^{x-1}$ for $x = 1,2,3, \dots.$
+
+\par
+
+Now, 
+$$ E[x] = \sum_{i=1}^{\infty} i Pr(X=i) =
+\sum_{i=1}^{\infty} i p(1-p)^{i-1}.$$
+
+
+Note that $d/dp (1-p)^i = -i(1-p)^{i-1}.$
+
+We can now substitute and rearrange the terms so that we take the limit as the sum approaches infinity. We know the derivative of a finite sum is the sum of the derivatives, so this enables us to bring the derivative operator to the front of the sum.
+
+$$ E[x] = -p\sum_{i=1}^{\infty} d/dp (1-p)^{i} = -p \lim_{N \rightarrow \infty}  d/dp \sum_{i=1}^{N}(1-p)^{i}.$$
+
+Simplifying the finite sum in closed form yields:
+
+
+\begin{align*}
+  E[x] &= -p \lim_{N \rightarrow \infty}  d/dp \left[ (1-p)\frac{ 1 - (1-p)^{N}}{1 -(1-p)} \right]\\
+  &= -p \lim_{N \rightarrow \infty}  d/dp \left[ (1-p)\frac{ 1 - (1-p)^{N}}{p} \right]\\
+  &= -p \lim_{N \rightarrow \infty}  d/dp \left[ \frac{ (1-p) - (1-p)(1-p)^{N}}{p} \right]\\
+  &= -p \lim_{N \rightarrow \infty}  d/dp \left[ \frac{ 1-p - (1-p)^{N}+p(1-p)^{N}}{p} \right]\\
+  &= -p \lim_{N \rightarrow \infty}  d/dp \left[ \frac{1}{p} -1 - \frac{(1-p)^{N}}{p} +(1-p)^{N} \right]\\
+  &= -p \lim_{N \rightarrow \infty} \left[ -\frac{1}{p^2} - \left(-p^{-2}(1-p)^N - p^{-1}N(1-p)^{N-1} \right) -N(1-p)^{N-1} \right]\\
+  &= -p \lim_{N \rightarrow \infty} \left[ -\frac{1}{p^2}  +p^{-2}(1-p)^N + p^{-1}N(1-p)^{N-1}-N(1-p)^{N-1} \right]\\
+  &= -p \left( -\frac{1}{p^2} + \lim_{N \rightarrow \infty} \left[p^{-1}N(1-p)^{N-1}-N(1-p)^{N-1} \right] \right)\\
+  &= -p \left( -\frac{1}{p^2} + \lim_{N \rightarrow \infty} \left[p^{-1}N(1-p)^{N-1}-N(1-p)^{N-1} \right] \right)\\
+  &= -p \left( -\frac{1}{p^2} + \left(\frac{1}{p}-1\right)\lim_{N \rightarrow \infty}N(1-p)^{N-1} \right)\\
+  &= -p \left( -\frac{1}{p^2} + \frac{\frac{1}{p}-1}{1-p}\lim_{N \rightarrow \infty}N(1-p)^{N} \right)
+\end{align*}
+
+Note that $\lim_{N \rightarrow \infty}N(1-p)^{N} = \lim_{N \rightarrow \infty}\frac{N}{(1-p)^{-N}} 
+= \lim_{N \rightarrow \infty}\frac{\frac{d}{dN} N}{ \frac{d}{dN}(1-p)^{-N}} 
+= \lim_{N \rightarrow \infty} \frac{1}{-\ln(1-p)(1-p)^{-N}}
+= \lim_{N \rightarrow \infty}\frac{-(1-p)^{N}}{\ln(1-p)} = 0.$
+
+Hence, $$E[x]  = -p \left( -\frac{1}{p^2} + \frac{p-1}{1-p}0\right) = -p\left(\frac{-1}{p^2}\right) = \frac{1}{p}$$
+
+\end{proof}
+
+
+\end{document}
+
+
+

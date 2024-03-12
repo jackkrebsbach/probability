@@ -1,0 +1,264 @@
+ \documentclass[10pt]{report}
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{ Notes for Introduction to Probability }
+
+\author{Jack Krebsbach}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+\setcounter{secnumdepth}{1}
+\chapter{Set Theory}
+
+% \section{Set Theory}
+\section{Definitions}
+
+\dfn{Set}{
+  A set is a collection of objects. The objects in a  set are frequently called \textbf{elements.}
+}
+
+
+\section{Set Properties}
+
+We can think of 'distributing' the set operations in the parentheses.
+
+\begin{itemize}
+  \item $A \cap (B \cup C) = (A \cap B) \cup (A \cap C) $
+  \item $A \cup (B \cap C) = (A \cup B) \cap (A \cup C) $
+  \item In general ($\bigcup_{i=1}^{\infty} A_i)^C = \bigcap_{i=1}^{\infty} A_i^C$
+  \item $n(A \cup B) = n(A) + n(B) - n(A \cap B)$
+  \item If $A \subseteq B$ then $n(A) \leq n(B)$
+  \item Every set contains the empty set $\emptyset$
+
+
+    
+\end{itemize}
+
+
+\ex{16}{
+  Let $A$ and $B$ be any two sets. Use Venn diagrams to show that $B = (A \cap B) \cup (A^C \cap B^C)$ and $A \cup B= A \cup (A^C \cap B)$
+
+These are disjoint or mutually exclusive unions.
+}
+
+\ex{}{
+A survey of a group's viewing habits over tne last yun following information.
+    
+(i) $28 \%$ watched gymnastics (G)
+(ii) $29 \%$ watched baseball (B)
+(iii) $19 \%$ watched soccer (S)
+(iv) $14 \%$ watched gymnastics and baseball
+(v) $12 \%$ watched baseball and soccer
+$10 \%$ watched gymnastics and soccer
+ $8 \%$ watched all three sports.
+
+
+Represent the statement "the group that watched none of the three sports during the last year" using operations on sets.
+  A survey of a groups viewing habits over the last year revealed the following information.
+
+  $$(G \cup B \cup S)^C$$
+}
+
+
+\ex{18}{
+  Mutually exclusion principle.
+  Show that if $A,B,C$ are subsets of the universe $U$ then $n(A\cap B\cap C) = n(A) + n(B) + n(C) - n(A\cap B) - n(B\cap C) - n(C\cap A) - n(A \cap B \cap C)$
+
+  $\begin{aligned} & n(A)+n(B)+n(C)-n(A|| B)-m(1+\cdots \\ & \text { - }(A \cup B \cup C)=n(A \cup(B \cup C))=n(A)+n(B \cup C)-n(A \cap(B \cup C)) \\ & =n(A)+n(B)+n(C)-n(B \cap C)-n[(A \cap B) \cup(A \cap C)] \\ & =n(A)+n(B)+n(C)-n(B \cap C)-\left[\begin{array}{l}n(A \cap B)+n(A \cap C) \\ -n(A \cap B \cap A \cap C)\end{array}\right] \\ & =n(A)+n(B)+n(C)-n(A \cap B)-n(A \cap C)-n(B \cap C) \\ & +n(A \cap B \cap C) \# \\ & \end{aligned}$
+}
+
+\subsection{DeMorgan Laws}
+
+\dfn{DeMorgan Laws}{
+
+\begin{enumerate}
+  \item  $(A \cup B)^C = A^C \cap B^C$
+  \item $(A \cap B)^C = A^C \cup B^C$
+
+\end{enumerate}
+}
+
+    
+\begin{enumerate}
+    
+  \item  $(A \cup B)^C = A^C \cap B^C$
+    \begin{myproof}
+        
+    \par
+    $\Rightarrow$ Let $x \in (A \cup B)^C$. Then $x \not\in (A \cup B)$ and it follows $x \not\in A$ and $x\not\in B$.This means that $x \in A^C$ and $x \in B^C$. Thus, $x \in A^C \cap B^C.$
+    \par
+    $\Leftarrow$ Let $x\in A^C \cap B^C$. Then $x \in A^C$ and $x \in B^C.$ This means $x \not\in A $ and $x \not\in B$. Finally, $x\not\in A \cup B$ which implies $x \in (A \cup B)^C.$
+
+    \end{myproof}
+
+  \item $(A \cap B)^C = A^C \cup B^C$
+
+    \begin{myproof}
+      $\Rightarrow$ Let $x \in (A \cap B)^C$. Then $x \not\in A \cap B$ and it follows that $x \not\in A$ or $x \not\in B.$Then $x \in A^C$ or $x \in B^C.$ Thus, $x \in A^C \cup B^C$.
+      \par
+      $\Leftarrow$ Let $x \in A^C \cup B^C.$ Then $x \in A^C$ or $x \in B^C$ and it follows $x \not\in A$ or $x\not\in B.$ Then $x$ can not be in their intersection so $x \not\in A \cap B.$ Finally, this means $x \in (A \cap B)^C.$
+        
+    \end{myproof}
+
+\end{enumerate}
+
+
+\section{Counting}
+
+\subsection{Multiplication Principle}
+
+If a compound action can be broken into a series of $k$ compoonent actions each of these can be performed in $n_1, n_2, \dots, n_k $  ways respectively, then the compound action can be performed $n_1n_2n_3 \dots n_k$ ways.
+
+\smallskip
+
+\ex{}{
+How many license plates with 3 letters followed by 3 digits exist?
+
+\sol    A 6-step process. (1) Choose the first letter (2) choose teh second letter
+
+    $26^3 10^3= 125,760,000$
+}
+
+\ex{}{
+  How many numbers in the range 1000-9999 have no repeated digits?
+  \bigskip
+
+  \sol Usually solve the complement problem but in this case the original form is easier.
+
+  The solution is $$9(9)(8)(7)(6) = 4,536$$
+}
+
+\ex{Class problem}{
+How many different ways can you play an album of 15 songs.
+
+
+\sol $$ 15!$$
+}
+
+
+\subsection{Permutation Principle}
+
+It is useful to define $0! = 1$ because it is more convenient to do so.
+
+Suppose I have $n$ \textbf{distinct} objects and I wish to select $r$of them, and the order in which I select them is important. 
+
+
+\dfn{Permutation}{
+
+  $${}_{n} P_r = n(n-1)(n-2)\dots(n-(r-1)) =  \frac{n!}{(n-r)!}$$
+
+}
+
+ Specifically the number of ways to arrange $n$ \textbf{distinct} objects where the \textbf{order} in which they are selected. This means that $n=r.$
+
+ \ex{23}{
+
+How many license plates are there that start with three letters followed by 4 digits (no repetition).
+
+\sol
+Choices of $3$ letters and choices of $3$ numbers 
+$$ 26(25)(24) * 10(9)(8)  = 786,240,000 \text{ number of choices }$$
+ }
+
+ \ex{}{
+   How many five digit zip codes can be made where all digits are different? The possible digits $0$ through $9.$
+
+\sol ${}_10 P_5$
+ }
+
+
+\subsection{Combination Principle}
+
+Suppose I have $n$ \textbf{distinct} objects and I wish to select $r$of them, and the order in which I select them is \textit{not} important. We just divide the number of combinations we can take $r$ where order is important.
+
+\dfn{}{
+  $${}_n C_r = \frac{{}_n P_r }{r!} = \frac{n!}{r!(n-r)!}$$
+}
+
+
+\dfn{Combination}{
+
+}
+
+
+\subsection{Binomial Theorem}
+
+If $x$ and $y$ are variables and $n$ is a non-negative integer, then $$(x +y)^n = \sum_{k=0}^{n} C_k^n x^{n-k} y^k$$
+
+\ex{}{
+  A jury consisting of $2$ women and $3$ men is to be selected form a group of $5$ women and $7$ men. In how many different ways can this be done?
+  Suppose that either Steve or Harry must be selected but not both, then in how many ways this jury can be formed?
+
+\sol
+  \begin{enumerate}
+    \item  $$ {}_{5}C_2 \text{ } {}_7{C}_3 = 350 \text{ ways }$$
+    \item If Steve is in, then there are $5$ mean left to choose from. ${}_5 C_2 = 10(10)=100.$ Same argument for when Harry must be in, there are 100 ways. So total number of number of ways is $100 +100 =200$ ways.
+  \end{enumerate}
+
+}
+
+\ex{}{
+
+  \begin{itemize}
+    \item  How many ways can $6$ people line up for a picture.
+      \sol ${}_6 P_6 = 6!$
+    \item Can they choose a president and a secretary? 
+      \sol ${}_6 P_2.$
+    \item Can they choose three member to attend a state conference with no regard to order
+      \sol ${}_6 C_3.$
+      
+  \end{itemize}
+}
+
+\ex{}{
+  \begin{itemize}
+    \item Choose 3 out of 10 songs = ${}_{10} C_{3}$
+    \item Rate top 3 songs $= {}_10 P_{3}$
+  \end{itemize}
+}
+
+\ex{}{
+  We have six distinct CDs. How many ways would there be to place 3 in one box and $3$ in another. (be careful, do we know the boxes are distinct?)
+
+  \sol $ {}_6 C_3 ({}_3 C_3)$
+}
+
+\ex{}{
+Out of 10 distinct parts, 3 are defective. We select 2 of these parts at random. How many ways are there so that 
+
+\begin{itemize}
+  \item none of the 2 is defective. ${}_7 C_2 ({}_3C_0)$
+  \item Exactly 1 is defective and 1 is not defective ${}_3 C_1 ({}_7C_1)$
+  \item Both are defective ${}_3 C_2$
+
+\end{itemize}
+}
+
+\dfn{Sample Space}{
+  The sample space S of an experiment is the set of all possible outcomes for the experiment
+}
+
+\dfn{Event}{
+  Subset of the sample space.
+}
+
+\dfn{Probability}{
+  Is the measure of occurrence of an event.  We denote the probability of event A happening $PR(A).$ We can think of it as a function.
+}
+
+The function Pr satisfies the following axioms, known as Kolmogorov axioms:
+
+\begin{itemize}
+  \item (a) Axiom 1: For any event $E, 0 \leq \operatorname{Pr}(E) \leq 1$.
+  \item (b) Axiom 2: $\operatorname{Pr}(S)=1$.
+  \item (c) Axiom 3: For any sequence of mutually exclusive events $\left\{E_n\right\} n \geq 1$, that is $E_i \cap E_j=\phi$ for $i \neq j$, we have $\operatorname{Pr}\left(\cup_{i=1}^{\infty} E_i\right)=\Sigma_{i=1}^{\infty} \operatorname{Pr}\left(E_i\right)$. This axiom is known as countable additivity.
+i. Specifically, for mutually exclusive events $A, B$ and $C$, we have
+    
+\end{itemize}
+
+\end{document}
